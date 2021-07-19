@@ -1,0 +1,87 @@
+.search {
+    height: 80px;
+    background: var(--card_color);
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 463px 300px 345px;
+    grid-template-rows: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__input {
+        padding: 0 16px 0 32px;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid rgba($color: #6E8098, $alpha: .2);
+
+        input[type='text'] {
+            background-color: inherit;
+            border: none;
+            padding: 28px 0;
+            height: 100%;
+            width: 100%;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 16px;
+            color: var(--text_color);
+            outline: none;
+            caret-color: var(--main_color);
+        }
+
+        input[type='checkbox'] {
+            position: relative;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 3px;
+            display: block;
+            background-color: var(--bg_checkbox);
+            outline: none;
+            cursor: pointer;
+            transition: all .3s;
+            margin-right: 16px;
+
+            &:hover {
+                background-color: rgba($color: #5964E0, $alpha: .25);
+            }
+
+            &::before {
+                content: '';
+                display: none;
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                top: 0;
+                left: 0;
+                background: url(../icons/searchForms/check.svg) center center no-repeat;
+            }
+
+            &:checked {
+                background: var(--main_color);
+
+                &::before {
+                    display: block;
+                }
+            }
+        }
+
+        label {
+            margin-right: 16px;
+            color: var(--text_color);
+        }
+
+        label[for='shedule'] {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 16px;
+            margin-right: 26px;
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+}

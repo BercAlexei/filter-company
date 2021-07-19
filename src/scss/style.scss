@@ -1,0 +1,32 @@
+@import 'base/libs';
+@import 'base/fonts';
+@import 'base/vars';
+@import 'base/animation';
+
+* {
+    font-family: 'KumbhSans-Bold', sans-serif;
+}
+body {
+    background-color: var(--bg);
+    
+
+}
+.container {
+    height: 100%;
+    position: relative;
+    max-width: 1110px;
+    margin: 0 auto;
+}
+.spinner {
+    position: relative;
+    text-align: center;
+}
+@import 'blocks/header';
+@import 'blocks/search';
+@import 'blocks/btns';
+@import 'blocks/cards';
+@import 'blocks/card';
+@import 'blocks/title';
+@import 'blocks/company';
+
+@import 'blocks/media';

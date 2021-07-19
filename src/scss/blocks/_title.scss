@@ -1,0 +1,9 @@
+.title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 48px;
+    color: var(--main_color);
+}

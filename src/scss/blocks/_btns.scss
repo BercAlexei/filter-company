@@ -1,0 +1,41 @@
+.btn {
+    width: 123px;
+    height: 48px;
+    background: var(--main_color);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    transition: all .3s;
+    &:hover {
+        background: var(--main_color_light);
+    }
+    &_bottom {
+        width: 141px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 56px;
+    }
+    &_dimly {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--btn_site_company_text_color);
+        width: 147px;
+        height: 48px;
+        background: var(--btn_site_company);
+        &:hover {
+            color: var(--btn_site_company_text_color);
+            background: var(--btn_site_company_active);
+        }
+    }
+    &_company {
+        width: 141px;
+        height: 48px;
+    }
+}

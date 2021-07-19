@@ -1,0 +1,11 @@
+.cards {
+    padding-top: 145px;
+    padding-bottom: 104px;
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 228px;
+        grid-column-gap: 30px;
+        grid-row-gap: 65px;
+    }
+}

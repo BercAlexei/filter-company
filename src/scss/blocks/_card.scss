@@ -1,0 +1,75 @@
+.card {
+    padding: 49px 32px 32px 32px;
+    width: 350px;
+    height: 228px;
+    border-radius: 6px;
+    background-color: var(--card_color);
+    position: relative;
+
+    &__logo {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #E99210;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 32px;
+        top: -25px;
+    }
+
+    &__descr {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 16px;
+        color: #6E8098;
+        
+        span {
+            position: relative;
+            margin-left: 28px;
+            &:before {
+                content: '';
+                display: block;
+                width: 4px;
+                height: 4px;
+                border-radius: 100%;
+                position: absolute;
+                bottom: 4px;
+                left: -16px;
+                background: #6E8098;
+            }
+        }
+    }
+    &__position {
+        margin-top: 13px;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 20px;
+        
+        a {
+            color: var(--text_color);
+            text-decoration: none;
+            transition: all .3s;
+            &:hover {
+                color: #6E8098;
+            }
+        }
+    }
+    &__name {
+        margin-top: 17px;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 16px;
+        color: #6E8098;
+    }
+    &__location {
+        position: absolute;
+        bottom: 32px;
+        left: 32px;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 14px;
+        color: var(--main_color);
+    }
+}
