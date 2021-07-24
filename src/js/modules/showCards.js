@@ -4,7 +4,7 @@ import { Card, cardsWrapper } from "../services/cardRender";
 let arrayCompany;
 
 async function showCards() {
-    
+
     const btnShowMore = document.querySelector('#showMore');
     // счетчик показанных карточек
     let countCard = 0,
@@ -83,7 +83,7 @@ async function showCards() {
 
                 case (filterShedule.checked && locationValue !== '' && filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
-                        if (schedule == fullTime && location.toLowerCase() == locationValue && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
+                        if (schedule == fullTime && location.toLowerCase() == locationValue.trim() && (filterValue.trim() == name.toLowerCase().trim() || filterValue.trim() == position.toLowerCase().trim())) {
                             return {};
                         }
                     });
@@ -92,7 +92,7 @@ async function showCards() {
 
                 case (filterShedule.checked && locationValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, location }) => {
-                        if (schedule == fullTime && location.toLowerCase() == locationValue) {
+                        if (schedule == fullTime && location.toLowerCase() == locationValue.trim()) {
                             return {};
                         }
                     });
@@ -101,7 +101,7 @@ async function showCards() {
 
                 case (filterShedule.checked && filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, name, position }) => {
-                        if (schedule == fullTime && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
+                        if (schedule == fullTime && (filterValue.trim() == name.toLowerCase() || filterValue.trim() == position.toLowerCase())) {
                             return {};
                         }
                     });
@@ -110,7 +110,7 @@ async function showCards() {
 
                 case (locationValue !== '' && filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ location, name, position }) => {
-                        if (location.toLowerCase() == locationValue && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
+                        if (location.toLowerCase() == locationValue.trim() && (filterValue.trim() == name.toLowerCase() || filterValue.trim() == position.toLowerCase())) {
                             return {};
                         }
                     });
@@ -119,7 +119,7 @@ async function showCards() {
 
                 case (filterShedule.checked || locationValue !== '' || filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
-                        if (schedule == fullTime || location.toLowerCase() == locationValue || filterValue == name.toLowerCase() || filterValue == position.toLowerCase()) {
+                        if (schedule == fullTime || location.toLowerCase() == locationValue.trim() || filterValue.trim() == name.toLowerCase() || filterValue.trim() == position.toLowerCase()) {
                             return {};
                         }
                     });
