@@ -1,9 +1,10 @@
 .search {
     height: 80px;
     background: var(--card_color);
+    width: 1110px;
     border-radius: 6px;
     display: grid;
-    grid-template-columns: 463px 300px 345px;
+    grid-template-columns: minmax(auto, 463px)  minmax(auto, 300px) minmax(auto,345px);
     grid-template-rows: 100%;
     position: absolute;
     bottom: -50%;
@@ -42,6 +43,7 @@
             cursor: pointer;
             transition: all .3s;
             margin-right: 16px;
+            border: none;
 
             &:hover {
                 background-color: rgba($color: #5964E0, $alpha: .25);
@@ -79,7 +81,9 @@
             line-height: 16px;
             margin-right: 26px;
         }
-
+        .dnone {
+            display: none;
+        }
         &:last-child {
             border-right: none;
         }

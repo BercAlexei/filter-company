@@ -1,5 +1,5 @@
 const cardsWrapper = document.querySelector('.cards__wrapper');
-
+//рендер карточки компании
 class Card {
     constructor(id, color, location, logo, name, position, schedule, date) {
         this.id = id;
@@ -9,16 +9,16 @@ class Card {
         this.position = position;
         this.location = location;
         this.schedule = schedule;
-        this.date = Math.floor((new Date(Date.now()) - Date.parse(date)) / (1000 * 60 * 60));
+        this.date = Math.floor(((Date.parse(new Date()) - Date.parse(date)) / (1000 * 60 * 60)));
         switch(true) {
             case(this.date < 24 && this.date > 0) : {
                 this.date = `${this.date}h ago`;
                 break;
             }
             case (this.date > 24) : {
-                this.date = `${Math.floor((new Date(Date.now()) - Date.parse(date)) / (1000 * 60 * 60 * 24))}d ago`;
+                this.date = `${Math.floor((Date.parse(new Date()) - Date.parse(date)) / (1000 * 60 * 60 * 24))}d ago`;
                 if (this.date.replace(/\D/g, '') > 30) {
-                    this.date = `${Math.floor((new Date(Date.now()) - Date.parse(date)) / (1000 * 60 * 60 * 24 * 30))}m ago`;
+                    this.date = `${Math.floor((Date.parse(new Date()) - Date.parse(date)) / (1000 * 60 * 60 * 24 * 30))}m ago`;
                 }
                 break;
             }

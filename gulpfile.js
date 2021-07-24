@@ -52,6 +52,7 @@ gulp.task('watch', function () {
 	gulp.watch('src/img/**/*').on('add', gulp.parallel('images'))
 	gulp.watch('src/icons/**/*').on('add', gulp.parallel('icons'))
 	gulp.watch('src/fonts/**/*').on('add', gulp.parallel('fonts'))
+	gulp.watch('src/*.json').on('change', gulp.parallel('JSON'))
 })
 
 gulp.task('html', function () {
@@ -65,6 +66,7 @@ gulp.task('JSON', function () {
 	return gulp
 		.src('src/*.json')
 		.pipe(gulp.dest('dist/'))
+		.pipe(browserSync.stream());
 })
 
 gulp.task('fonts', function () {

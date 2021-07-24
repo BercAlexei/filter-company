@@ -6,20 +6,21 @@ let arrayCompany;
 async function showCards() {
     
     const btnShowMore = document.querySelector('#showMore');
-    let countCard= 0,
+    // счетчик показанных карточек
+    let countCard = 0,
         cardMax = 12,
-        filtrerArr = [];    
+        filtrerArr = [];
 
     arrayCompany = await getResource('db.json').then(res => res.company);
-
+    // сортировка массива
     arrayCompany.sort(function sortArr(a, b) {
         return new Date(b.date) - new Date(a.date);
     });
-
+    // назначение события на кнопку showmore 
     btnShowMore.onclick = event => {
         event.preventDefault();
         showCard(arrayCompany);
-    };  
+    };
 
     function showCard(arr) {
         for (countCard; countCard < arr.length; countCard++) {
@@ -44,7 +45,7 @@ async function showCards() {
     const filterTitle = document.querySelector('#filter'),
         filterLocation = document.querySelector('#location'),
         filterShedule = document.querySelector('#shedule'),
-        btnSearch = document.querySelector('#search');
+        btnSearch = document.querySelectorAll('[data-search]');
 
     function notFound() {
         if (filtrerArr.length == 0) {
@@ -53,86 +54,88 @@ async function showCards() {
             title.textContent = 'Not Found';
             cardsWrapper.append(title);
         }
-    }
+    } 
+    btnSearch.forEach(item => {
+        item.addEventListener('click', (event) => {
+            event.preventDefault();
 
-    btnSearch.addEventListener('click', (event) => {
-        event.preventDefault();
+            btnShowMore.style.display = '';
+            cardsWrapper.innerHTML = '';
+            countCard = 0;
+            cardMax = 12;
 
-        btnShowMore.style.display = '';
-        cardsWrapper.innerHTML = '';
-        countCard = 0;
-        cardMax = 12;
+            let fullTime = '',
+                filterValue = filterTitle.value.toLowerCase(),
+                locationValue = filterLocation.value.toLowerCase();
 
-        let fullTime = '',
-            filterValue = filterTitle.value.toLowerCase(),
-            locationValue = filterLocation.value.toLowerCase();
-        
-        if (filterShedule.checked) {
-            fullTime = 'Full Time';
-        }
-        function filterTrue() {
-            notFound();
-            btnShowMore.onclick = event => {
-                event.preventDefault();
-                showCard(filtrerArr);
-            };  
-            showCard(filtrerArr);
-        }
-        switch (true) {
-
-            case (filterShedule.checked && filterLocation.value !== '' && filterTitle.value !== ''):
-                filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
-                    if (schedule == fullTime && location.toLowerCase() == locationValue && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
-                        return {};
-                    }
-                });
-                filterTrue();
-                break;
-
-            case (filterShedule.checked && filterLocation.value !== ''):
-                filtrerArr = arrayCompany.filter(({ schedule, location }) => {
-                    if (schedule == fullTime && location.toLowerCase() == locationValue) {
-                        return {};
-                    }
-                });
-                filterTrue();
-                break;
-
-            case (filterShedule.checked && filterTitle.value !== ''):
-                filtrerArr = arrayCompany.filter(({ schedule, name, position }) => {
-                    if (schedule == fullTime && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
-                        return {};
-                    }
-                });
-                filterTrue();
-                break;
-
-            case (filterLocation.value !== '' && filterTitle.value !== ''):
-                filtrerArr = arrayCompany.filter(({ location, name, position }) => {
-                    if (location.toLowerCase() == locationValue && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
-                        return {};
-                    }
-                });
-                filterTrue();
-                break;
-
-            case (filterShedule.checked || filterLocation.value !== '' || filterTitle.value !== ''):
-                filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
-                    if (schedule == fullTime || location.toLowerCase() == locationValue || filterValue == name.toLowerCase() || filterValue == position.toLowerCase()) {
-                        return {};
-                    }
-                });
-                filterTrue();
-                break;
-
-            default:
+            if (filterShedule.checked) {
+                fullTime = 'Full Time';
+            }
+            function filterTrue() {
+                notFound();
                 btnShowMore.onclick = event => {
                     event.preventDefault();
+                    showCard(filtrerArr);
+                };
+                showCard(filtrerArr);
+            }
+            switch (true) {
+
+                case (filterShedule.checked && locationValue !== '' && filterValue !== ''):
+                    filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
+                        if (schedule == fullTime && location.toLowerCase() == locationValue && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
+                            return {};
+                        }
+                    });
+                    filterTrue();
+                    break;
+
+                case (filterShedule.checked && locationValue !== ''):
+                    filtrerArr = arrayCompany.filter(({ schedule, location }) => {
+                        if (schedule == fullTime && location.toLowerCase() == locationValue) {
+                            return {};
+                        }
+                    });
+                    filterTrue();
+                    break;
+
+                case (filterShedule.checked && filterValue !== ''):
+                    filtrerArr = arrayCompany.filter(({ schedule, name, position }) => {
+                        if (schedule == fullTime && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
+                            return {};
+                        }
+                    });
+                    filterTrue();
+                    break;
+
+                case (locationValue !== '' && filterValue !== ''):
+                    filtrerArr = arrayCompany.filter(({ location, name, position }) => {
+                        if (location.toLowerCase() == locationValue && (filterValue == name.toLowerCase() || filterValue == position.toLowerCase())) {
+                            return {};
+                        }
+                    });
+                    filterTrue();
+                    break;
+
+                case (filterShedule.checked || locationValue !== '' || filterValue !== ''):
+                    filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
+                        if (schedule == fullTime || location.toLowerCase() == locationValue || filterValue == name.toLowerCase() || filterValue == position.toLowerCase()) {
+                            return {};
+                        }
+                    });
+                    filterTrue();
+                    break;
+
+                default:
+                    btnShowMore.onclick = event => {
+                        event.preventDefault();
+                        showCard(arrayCompany);
+                    };
                     showCard(arrayCompany);
-                };  
-                showCard(arrayCompany);
-        }
+            }
+        });
     });
+
 }
 
 export { showCards, arrayCompany };

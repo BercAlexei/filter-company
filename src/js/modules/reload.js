@@ -3,7 +3,7 @@ import Company from './../services/companyRender';
 
 function reload() {
     window.addEventListener('popstate', event => {
-        console.log(event.state);
+        //отслеживание события изменения state и выполнение соответсвующих действий
         if (event.state == null) {
             const search = document.querySelector('.search'),
                 cards = document.querySelector('.cards'),

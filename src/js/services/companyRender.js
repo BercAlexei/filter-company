@@ -1,5 +1,5 @@
 import { Card } from "./cardRender";
-
+//рендер описания компании
 export default class Company extends Card {
     constructor(id, color, location, logo, name, position, schedule, date, descr, site) {
         super(id, color, location, logo, name, position, schedule, date );

@@ -1,6 +1,7 @@
 import { cardsWrapper } from '../services/cardRender';
-import { arrayCompany, showCards } from './showCards';
+import { arrayCompany } from './showCards';
 import Company from '../services/companyRender';
+import { pushHistoryLogo } from './logoHistory';
 
 function companyPage() {
 
@@ -10,7 +11,7 @@ function companyPage() {
         const search = document.querySelector('.search'),
             cards = document.querySelector('.cards');
 
-
+        //создаем переход на описание компании, делегирование
         if (event.target.getAttribute('data-link') == '') {
             search.style.display = 'none';
             cards.style.display = 'none';
@@ -27,20 +28,7 @@ function companyPage() {
             let { id, color, location, logo, name, position, schedule, date, descr, site } = company;
             new Company(id, color, location, logo, name, position, schedule, date, descr, site).render();
 
-            const logoLink = document.querySelector('.logo a');
-
-            logoLink.onclick = event => {
-                    event.preventDefault();
-                    history.pushState(null, null);
-                    
-                    const search = document.querySelector('.search'),
-                        cards = document.querySelector('.cards'),
-                        company = document.querySelector('.company');
-                        
-                    company.innerHTML = '';
-                    search.style.display = 'grid';
-                    cards.style.display = 'block';
-                };
+            pushHistoryLogo();
         }
     });
 }
