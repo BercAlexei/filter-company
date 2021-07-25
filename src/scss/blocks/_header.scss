@@ -29,7 +29,12 @@
         }
         input {
             appearance: none;
+            border: none;
             &:before {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
                 content: '';
                 display: block;
                 width: 48px;
@@ -43,7 +48,7 @@
                 display: block;
                 position: absolute;
                 top: 50%;
-                left: 40px;
+                left: 37px;
                 transform: translateY(-50%);
                 z-index: 2;
                 width: 14px;
@@ -60,7 +65,7 @@
             }
             &:checked {
                 &:after {
-                    left: 65px;
+                    left: 62px;
                 }
             }
         }

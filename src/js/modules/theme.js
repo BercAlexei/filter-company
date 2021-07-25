@@ -2,7 +2,7 @@ export default function theme() {
     const root = document.querySelector(':root'),
         checkTheme = document.querySelector('#theme');
 
-    function setNewVarCss(bgColor, cardColor, textColor, checkboxColor, buttonColorActive, buttonColorNotActive,btnSiteCompanyTextColor) {
+    function setNewVarCss(bgColor, cardColor, textColor, checkboxColor, buttonColorActive, buttonColorNotActive,btnSiteCompanyTextColor, bgFilter) {
         root.style.setProperty('--bg', bgColor);
         root.style.setProperty('--card_color', cardColor);
         root.style.setProperty('--text_color', textColor);
@@ -10,16 +10,17 @@ export default function theme() {
         root.style.setProperty('--btn_site_company', buttonColorActive);
         root.style.setProperty('--btn_site_company_active', buttonColorNotActive);
         root.style.setProperty('--btn_site_company_text_color', btnSiteCompanyTextColor);
+        root.style.setProperty('--filter_mob_bg', bgFilter);
     }
 
     function themeChenge() {
         if (localStorage.getItem('theme') === 'light') {
-            setNewVarCss('#F4F6F8', 'white', '#19202D', 'rgba(25, 32, 45, .1)', 'rgba(89, 100, 224, .1)', 'rgba(89, 100, 224, .35)', '#5964E0');
+            setNewVarCss('#F4F6F8', 'white', '#19202D', 'rgba(25, 32, 45, .1)', 'rgba(89, 100, 224, .1)', 'rgba(89, 100, 224, .35)', '#5964E0', '#6E8098');
         }
 
         if (localStorage.getItem('theme') === 'dark') {
             checkTheme.checked = true;
-            setNewVarCss('#121721', '#19202D', '#FFFFFF', 'rgba(255, 255, 255, .1)', 'rgba(255, 255, 255, .1)', 'rgba(255, 255, 255, .35)', 'white');
+            setNewVarCss('#121721', '#19202D', '#FFFFFF', 'rgba(255, 255, 255, .1)', 'rgba(255, 255, 255, .1)', 'rgba(255, 255, 255, .35)', 'white', 'white');
         }
     }
 

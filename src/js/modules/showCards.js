@@ -46,6 +46,14 @@ async function showCards() {
         filterLocation = document.querySelector('#location'),
         filterShedule = document.querySelector('#shedule'),
         btnSearch = document.querySelectorAll('[data-search]');
+    // запрет на ввод всех знаков кроме букв
+    const inptusText = document.querySelectorAll('input[type=text]');
+    console.log(filterTitle);
+    inptusText.forEach(item => {
+        item.addEventListener('input', () => {
+            item.value = item.value.replace(/[^A-Z, a-z, А-Я, а-я, &, ']/g, '');
+        });
+    });
 
     function notFound() {
         if (filtrerArr.length == 0) {
@@ -55,6 +63,7 @@ async function showCards() {
             cardsWrapper.append(title);
         }
     } 
+    
     btnSearch.forEach(item => {
         item.addEventListener('click', (event) => {
             event.preventDefault();

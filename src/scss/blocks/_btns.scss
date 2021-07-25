@@ -1,6 +1,4 @@
 .btn {
-    width: 123px;
-    height: 48px;
     background: var(--main_color);
     border: none;
     border-radius: 5px;
@@ -13,7 +11,17 @@
     &:hover {
         background: var(--main_color_light);
     }
+    &-search {
+        width: 123px;
+        height: 48px;
+    }
+    &_mob {
+        padding: 0;
+        min-width: 48px;
+        height: 48px;
+    }
     &_bottom {
+        height: 48px;
         width: 141px;
         position: relative;
         left: 50%;
@@ -37,5 +45,16 @@
     &_company {
         width: 141px;
         height: 48px;
+    }
+}
+
+.filter {
+    border: none;
+    background: transparent;
+    margin-right: 24px;
+    svg {
+        path {
+            fill: var(--filter_mob_bg);
+        }
     }
 }

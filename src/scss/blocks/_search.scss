@@ -1,17 +1,23 @@
 .search {
     height: 80px;
     background: var(--card_color);
-    width: 1110px;
+    width: 100%;
     border-radius: 6px;
-    display: grid;
-    grid-template-columns: minmax(auto, 463px)  minmax(auto, 300px) minmax(auto,345px);
-    grid-template-rows: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: -40px;
+    &__desc {
+        height: 100%;
+        display: grid;
+        grid-template-columns: minmax(auto, 463px) minmax(auto, 300px) minmax(auto, 345px);
+        grid-template-rows: 100%;
+    }
+    &__mob {
+        display: none;
+        height: 100%;
+    }
 
     &__input {
+        height: 100%;
         padding: 0 16px 0 32px;
         display: flex;
         align-items: center;
@@ -81,11 +87,23 @@
             line-height: 16px;
             margin-right: 26px;
         }
+
         .dnone {
             display: none;
         }
+
         &:last-child {
             border-right: none;
         }
+
+        &_mob {
+            padding: 0 16px 0 24px;
+            justify-content: space-between;
+            input[type='text'] {
+                margin-right: 25px;
+            }
+        }
+
     }
+
 }
