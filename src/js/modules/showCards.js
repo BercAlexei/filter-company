@@ -46,14 +46,30 @@ async function showCards() {
         filterLocation = document.querySelector('#location'),
         filterShedule = document.querySelector('#shedule'),
         btnSearch = document.querySelectorAll('[data-search]');
-    // запрет на ввод всех знаков кроме букв
+
     if (window.innerWidth <= 767) {
         filterTitle = document.querySelector('[data-filter]');
+        filterLocation = document.querySelector('#location-modal');
+        filterShedule = document.querySelector('#shedule-modal');
     }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 767) {
+            filterTitle = document.querySelector('[data-filter]');
+            filterLocation = document.querySelector('#location-modal');
+            filterShedule = document.querySelector('#shedule-modal');
+        } else {
+            filterTitle = document.querySelector('#filter');
+            filterLocation = document.querySelector('#location');
+            filterShedule = document.querySelector('#shedule');
+        }
+    });
+
+    // запрет на ввод всех знаков кроме букв
     const inptusText = document.querySelectorAll('input[type=text]');
     inptusText.forEach(item => {
         item.addEventListener('input', () => {
-            item.value = item.value.replace(/[^A-Z, a-z, А-Я, а-я, &, ']/g, '');
+            item.value = item.value.replace(/[^A-Z, a-z, А-Я, а-я, &, ', -]/g, '');
         });
     });
 
@@ -64,8 +80,8 @@ async function showCards() {
             title.textContent = 'Not Found';
             cardsWrapper.append(title);
         }
-    } 
-    
+    }
+
     btnSearch.forEach(item => {
         item.addEventListener('click', (event) => {
             event.preventDefault();
@@ -90,6 +106,8 @@ async function showCards() {
                 };
                 showCard(filtrerArr);
             }
+            const modal = document.querySelector('.modal');
+            modal.classList.remove('modal_active');
             switch (true) {
 
                 case (filterShedule.checked && locationValue !== '' && filterValue !== ''):

@@ -11,6 +11,13 @@
     &:hover {
         background: var(--main_color_light);
     }
+    &__modal {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 48px);
+        height: 48px;
+    }
     &-search {
         width: 123px;
         height: 48px;
