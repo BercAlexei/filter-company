@@ -41,7 +41,7 @@ export default class Company extends Card {
                             ${this.location}
                         </div>
                     </div>
-                    <button class="btn btn_company">Apply Now</button>
+                    <button class="btn btn__company">Apply Now</button>
                 </div>
                 <div class="company__text">
                     ${this.descr}
@@ -60,7 +60,7 @@ export default class Company extends Card {
                         </span>
     
                     </div>
-                    <button class="btn btn_company">Apply Now</button>
+                    <button class="btn btn__company btn__company_m0">Apply Now</button>
                 </div>
             </div>
         </div>
