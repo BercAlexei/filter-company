@@ -75,7 +75,7 @@ async function showCards() {
 
     function notFound() {
         if (filtrerArr.length == 0) {
-            let title = document.createElement('h2');
+            let title = document.createElement('div');
             title.classList.add('title');
             title.textContent = 'Not Found';
             cardsWrapper.append(title);
@@ -112,7 +112,7 @@ async function showCards() {
 
                 case (filterShedule.checked && locationValue !== '' && filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
-                        if (schedule == fullTime && location.toLowerCase() == locationValue.trim() && (filterValue.trim() == name.toLowerCase().trim() || filterValue.trim() == position.toLowerCase().trim())) {
+                        if (schedule == fullTime && location.toLowerCase() == locationValue.trim() && (filterValue.trim() == name.toLowerCase().trim() || (position.toLowerCase().lastIndexOf(filterValue.trim()) + 1 >= 1 && position.toLowerCase().lastIndexOf(filterValue.trim()) !== position.length))) {
                             return {};
                         }
                     });
@@ -130,7 +130,7 @@ async function showCards() {
 
                 case (filterShedule.checked && filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, name, position }) => {
-                        if (schedule == fullTime && (filterValue.trim() == name.toLowerCase() || filterValue.trim() == position.toLowerCase())) {
+                        if (schedule == fullTime && (filterValue.trim() == name.toLowerCase() || (position.toLowerCase().lastIndexOf(filterValue.trim()) + 1 >= 1 && position.toLowerCase().lastIndexOf(filterValue.trim()) !== position.length))) {
                             return {};
                         }
                     });
@@ -139,7 +139,7 @@ async function showCards() {
 
                 case (locationValue !== '' && filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ location, name, position }) => {
-                        if (location.toLowerCase() == locationValue.trim() && (filterValue.trim() == name.toLowerCase() || filterValue.trim() == position.toLowerCase())) {
+                        if (location.toLowerCase() == locationValue.trim() && (filterValue.trim() == name.toLowerCase() || (position.toLowerCase().lastIndexOf(filterValue.trim()) + 1 >= 1 && position.toLowerCase().lastIndexOf(filterValue.trim()) !== position.length))) {
                             return {};
                         }
                     });
@@ -148,7 +148,7 @@ async function showCards() {
 
                 case (filterShedule.checked || locationValue !== '' || filterValue !== ''):
                     filtrerArr = arrayCompany.filter(({ schedule, location, name, position }) => {
-                        if (schedule == fullTime || location.toLowerCase() == locationValue.trim() || filterValue.trim() == name.toLowerCase() || filterValue.trim() == position.toLowerCase()) {
+                        if (schedule == fullTime || location.toLowerCase() == locationValue.trim() || filterValue.trim() == name.toLowerCase() || (position.toLowerCase().lastIndexOf(filterValue.trim()) + 1 >= 1 && position.toLowerCase().lastIndexOf(filterValue.trim()) !== position.length)) {
                             return {};
                         }
                     });
